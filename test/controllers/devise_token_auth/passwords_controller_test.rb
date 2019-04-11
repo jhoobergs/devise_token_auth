@@ -33,7 +33,7 @@ class DeviseTokenAuth::PasswordsControllerTest < ActionController::TestCase
         test 'error message should be returned' do
           assert @data['errors']
           assert_equal @data['errors'],
-                       [I18n.t('devise_token_auth.passwords.missing_email')]
+                       [{ 'message' => I18n.t('devise_token_auth.passwords.missing_email') }]
         end
       end
 
@@ -58,7 +58,7 @@ class DeviseTokenAuth::PasswordsControllerTest < ActionController::TestCase
             assert @data['errors']
             assert_equal(
               @data['errors'],
-              [I18n.t('devise_token_auth.passwords.missing_redirect_url')]
+              [{ 'message' => I18n.t('devise_token_auth.passwords.missing_redirect_url')}]
             )
           end
         end
@@ -78,7 +78,7 @@ class DeviseTokenAuth::PasswordsControllerTest < ActionController::TestCase
             assert @data['errors']
             assert_equal(
               @data['errors'],
-              [I18n.t('devise_token_auth.passwords.missing_redirect_url')]
+              [{ 'message' => I18n.t('devise_token_auth.passwords.missing_redirect_url') }]
             )
           end
         end
@@ -100,8 +100,8 @@ class DeviseTokenAuth::PasswordsControllerTest < ActionController::TestCase
           test 'errors should be returned' do
             assert @data['errors']
             assert_equal @data['errors'],
-                         [I18n.t('devise_token_auth.passwords.user_not_found',
-                                 email: 'chester@cheet.ah')]
+                         [{ 'message' => I18n.t('devise_token_auth.passwords.user_not_found',
+                                 email: 'chester@cheet.ah') }]
           end
         end
 
@@ -392,8 +392,8 @@ class DeviseTokenAuth::PasswordsControllerTest < ActionController::TestCase
             @data = JSON.parse(response.body)
             assert @data['errors']
             assert_equal @data['errors'],
-                         [I18n.t('devise_token_auth.passwords.not_allowed_redirect_url',
-                                 redirect_url: @bad_redirect_url)]
+                         [{ 'message' => I18n.t('devise_token_auth.passwords.not_allowed_redirect_url',
+                                 redirect_url: @bad_redirect_url) }]
           end
         end
 
@@ -423,8 +423,8 @@ class DeviseTokenAuth::PasswordsControllerTest < ActionController::TestCase
             @data = JSON.parse(response.body)
             assert @data['errors']
             assert_equal @data['errors'],
-                         [I18n.t('devise_token_auth.passwords.not_allowed_redirect_url',
-                                 redirect_url: @bad_redirect_url)]
+                         [{ 'message' => I18n.t('devise_token_auth.passwords.not_allowed_redirect_url',
+                                 redirect_url: @bad_redirect_url) }]
           end
         end
       end

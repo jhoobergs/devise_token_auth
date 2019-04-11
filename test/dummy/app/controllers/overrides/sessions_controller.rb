@@ -19,16 +19,16 @@ module Overrides
       elsif @resource && (not @resource.confirmed?)
         render json: {
           success: false,
-          errors: [
+          errors: [ { 'message' =>
             "A confirmation email was sent to your account at #{@resource.email}. "\
             'You must follow the instructions in the email before your account '\
             'can be activated'
-          ]
+          }]
         }, status: 401
 
       else
         render json: {
-          errors: ['Invalid login credentials. Please try again.']
+          errors: [{ 'message' => 'Invalid login credentials. Please try again.' }]
         }, status: 401
       end
     end

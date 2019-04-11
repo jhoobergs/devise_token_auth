@@ -21,7 +21,7 @@ module Overrides
       else
         render json: {
           status: 'error',
-          errors: ['User not found.']
+          errors: [{ 'message' => 'User not found.' }]
         }, status: 404
       end
     end

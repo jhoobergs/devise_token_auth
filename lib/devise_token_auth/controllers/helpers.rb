@@ -70,7 +70,7 @@ module DeviseTokenAuth
 
             def render_authenticate_error
               return render json: {
-                errors: [I18n.t('devise.failure.unauthenticated')]
+                errors: [{ 'message' => I18n.t('devise.failure.unauthenticated')}]
               }, status: 401
             end
 
@@ -140,7 +140,7 @@ module DeviseTokenAuth
 
           def render_authenticate_error
             return render json: {
-              errors: [I18n.t('devise.failure.unauthenticated')]
+              errors: [{ 'message' => I18n.t('devise.failure.unauthenticated')}]
             }, status: 401
           end
         METHODS

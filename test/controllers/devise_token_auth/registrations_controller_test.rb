@@ -160,8 +160,8 @@ class DeviseTokenAuth::RegistrationsControllerTest < ActionDispatch::Integration
         assert_equal 422, response.status
         assert @data['errors']
         assert_equal @data['errors'],
-                     [I18n.t('devise_token_auth.registrations.redirect_url_not_allowed',
-                             redirect_url: @bad_redirect_url)]
+                     [{ 'message' => I18n.t('devise_token_auth.registrations.redirect_url_not_allowed',
+                             redirect_url: @bad_redirect_url)}]
       end
     end
 
@@ -185,7 +185,7 @@ class DeviseTokenAuth::RegistrationsControllerTest < ActionDispatch::Integration
         @data = JSON.parse(response.body)
 
         assert @data['errors']
-        assert_equal @data['errors'], [I18n.t('devise_token_auth.registrations.missing_confirm_success_url')]
+        assert_equal @data['errors'], [{ 'message' => I18n.t('devise_token_auth.registrations.missing_confirm_success_url') }]
       end
     end
 
@@ -470,7 +470,7 @@ class DeviseTokenAuth::RegistrationsControllerTest < ActionDispatch::Integration
 
         test 'error should be returned' do
           assert @data['errors'].length
-          assert_equal @data['errors'], [I18n.t('devise_token_auth.registrations.account_to_destroy_not_found')]
+          assert_equal @data['errors'], [{ 'message' => I18n.t('devise_token_auth.registrations.account_to_destroy_not_found')}]
         end
       end
     end
@@ -721,7 +721,7 @@ class DeviseTokenAuth::RegistrationsControllerTest < ActionDispatch::Integration
 
         test 'error should be returned' do
           assert @data['errors'].length
-          assert_equal @data['errors'], [I18n.t('devise_token_auth.registrations.user_not_found')]
+          assert_equal @data['errors'], [{ 'message' => I18n.t('devise_token_auth.registrations.user_not_found')}]
         end
 
         test 'User should not be updated' do

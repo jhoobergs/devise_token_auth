@@ -70,7 +70,9 @@ module DeviseTokenAuth
     def render_error(status, message, data = nil)
       response = {
         success: false,
-        errors: [message]
+        errors: [{
+          'message' => message
+        }]
       }
       response = response.merge(data) if data
       render json: response, status: status
